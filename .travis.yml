@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+- 2.1
+script: bundle exec rake
+bundler_args: "--binstubs"
+branches:
+  only:
+  - master
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - GH_REF: github.com/usnationalarchives/capstone-grs.git
+  - secure: qDXC3IlbsKzT0H4xSWEIaq00Vk7KV83Ty87D2OoCEFUm5YZYvEzaixxGX5jp3AK5B5DSz8rViw7jyXWsgAOtLNrZ/IzsWrns/B6rbo8ptQL0QW52PI51gphH7YbW+u706fX55ohDNjx3b1vsQY/E0Zjy35HhOHTGIYpl8ckEi6ortXO8PIlVta+QWA+gdAQ/5aJCA2xOongkql2xX8qFqjWQLXvhhEs1CsT9Bo35Kv134i9DLCN9XegU9+5GnXgYFAfwXRk5A82gE97uqROtmubQtmHk/rs2snrwzXfSYjfcBfP4I0eiU4p9Q6cotllhcBxkj7vwOEtDZZvcjutAWTqMPqfwNdcve+/PZYBS5aj/bC54CvmVzNEcuXujDtxrWBGWMtc5CMTWTEXus8U7lf/5q+tB2u5blLQan3Qmx3Nl+MYvOA4ySaDN2Tp4xTH+f9IAdoHBfOJ7PWIh+lBCwbiAG2a7waLFbKa5ydtYqpK/s4io6gfRTez8umE93og3jANUd0RWPGGdVnoFAxJMKvCqTD3a1hRHSG+eauDPYUbzWu3t8WA5PtU79ajYrHxAMsI9BEcs0LW6xHs55qjtowPcBkon+g2P5Tq6rzLKk7xT22gzoqF5Hu6F8W54nmJTNDI+ssjg27H7mcdBx89d/s8VCL9xJ3pBzZ7dbhKx3JA=
+install:
+- git config --global user.email "davidnaffis@gmail.com"
+- git config --global user.name "naffis"
+- travis_wait bundle install
