@@ -4,7 +4,7 @@ require "tmpdir"
 require "bundler/setup"
 require "jekyll"
 
-GITHUB_REPONAME = "naffis/capstone-grs"
+GITHUB_REPONAME = "usnationalarchives/capstone-grs"
 
 desc "Generate blog files"
 task :generate do

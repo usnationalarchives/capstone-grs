@@ -20,7 +20,7 @@ the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/pub
 
 All contributions to this project will be released under the CC0 dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest
 
-For more information, see [license](https://github.com/naffis/capstone-grs/blob/master/LICENSE.md).
+For more information, see [license](https://github.com/usnationalarchives/capstone-grs/blob/master/LICENSE.md).
 
 ## Privacy
 
@@ -28,7 +28,7 @@ All comments, messages, pull requests, and other submissions received through of
 
 ## Contributions
 
-We welcome contributions. If you would like to contribute to the project you can do so by forking the repository and submitting your changes in a pull request. You can submit issues using [GitHub Issues](https://github.com/naffis/capstone-grs/issues).
+We welcome contributions. If you would like to contribute to the project you can do so by forking the repository and submitting your changes in a pull request. You can submit issues using [GitHub Issues](https://github.com/usnationalarchives/capstone-grs/issues).
 
 ## How to run
 

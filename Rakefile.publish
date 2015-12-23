@@ -5,7 +5,7 @@ require "rubygems"
     require "jekyll"
 
     # Change your GitHub reponame
-    GITHUB_REPONAME = "naffis/capstone-grs"
+    GITHUB_REPONAME = "usnationalarchives/capstone-grs"
 
     desc "Generate blog files"
     task :generate do
