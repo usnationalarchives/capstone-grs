@@ -1,0 +1,12 @@
+{% assign url = page.url | remove: "/api/" | remove: ".json" %}
+{% assign url_components = url | split: "/" %}
+{% assign data_file = url_components[0] %}
+
+{% assign api_requested_column = url_components[1] %}
+{% for column_name in site.data[data_file].first %}
+	{% assign sanitized_column_name =  column_name.first | sanitize_string %}		
+	{% if sanitized_column_name == api_requested_column %}
+		{% assign api_requested_column = column_name.first %}
+	{% endif %}
+{% endfor %}
+{{ site.data[data_file] | map_to_json: api_requested_column | jsonify }}

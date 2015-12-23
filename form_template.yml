@@ -1,0 +1,247 @@
+number: 
+  column-name: "Number"
+  type: text
+  before: "FOR NARA USE ONLY\n\nNumber "
+  after: "\n\nReceived Date"
+received-date:
+  column-name: "Received Date"
+  type: text
+  before: "\n\nReceived Date "
+  after: "\n\nTotal Accounts"
+total-accounts: 
+  column-name: "Total Accounts"
+  type: text
+  before: "\n\nTotal Accounts "
+  after: "\n\nAgencies are reminded"
+agency-name:
+  column-name: "Name of Agency to Which this Form Applies"
+  type: text
+  before: "Name of Agency\nto Which this\nForm Applies:\n\n"
+  after: "\n\nRecord Group\nNumber:"
+record-group-number:
+  column-name: "Record Group Number"
+  type: text
+  before: "Record Group\nNumber:\n\n"
+  after: "\n\n** Please spell out full agency name."
+superceding-previous-submission:
+  column-name: "Superseding a Previous Submission"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Yes"
+      before: "form1[0].subform[0].Subform2[0].CheckBox1[0]: "
+      after: "\n\tform1[0].subform[0].Subform2[0].CheckBox2[0]:"
+  - label:
+      label-name: "No"
+      before: "form1[0].subform[0].Subform2[0].CheckBox2[0]: "
+      after: "\n\tform1[0].subform[0].CheckBox3[0]:"
+previous-tracking-number:
+  column-name: "Previous Tracking Number"
+  type: text
+  before: "If yes, provide previous tracking number assigned by NARA:\n\n"
+  after: "GRS 6.1 item(s) proposed for use:"
+grs-items-proposed-for-use:
+  column-name: "GRS 6.1 Item(s) Proposed for Use"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "All"
+      before: "form1[0].subform[0].CheckBox3[0]: "
+      after: "\n\tform1[0].subform[0].CheckBox4[0]:"
+  - label:
+      label-name: "ITEM 010"
+      before: "form1[0].subform[0].CheckBox4[0]: "
+      after: "\n\tform1[0].subform[0].CheckBox5[0]:"
+  - label:
+      label-name: "ITEM 011"
+      before: "\n\tform1[0].subform[0].CheckBox5[0]: "
+      after: "\n\tform1[0].subform[0].CheckBox6[0]:"
+  - label:
+      label-name: "ITEM 012"
+      before: "\n\tform1[0].subform[0].CheckBox6[0]: "
+      after: "\n\tform1[0].subform[0].CheckBox7[0]:"
+implementation-scope:
+  column-name: "Implementation Scope for this Submission"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Agency-Wide"
+      before: "form1[0].subform[0].CheckBox7[0]: "
+      after: "\n\tform1[0].subform[0].CheckBox8[0]:"
+  - label:
+      label-name: "Component/Office"
+      before: "form1[0].subform[0].CheckBox8[0]: "
+      after: "\n\tform1[0].Scopeandcomments[0].Subform6[0].CheckBox9[0]:"
+additional-scope-comments:
+  column-name: "Additional Scope Comments"
+  type: text
+  before: "summarize how other email is to be managed.\n\n"
+  after: "\n\n** Note: Box will expand"
+legacy-email-scope:
+  column-name: "Legacy Email Scope"
+  type: text
+  before: "dating back to approximately 2010.”)\n\n"
+  after: "\n\nNOYES\nCapstone Officials"
+capstone-officials-and-classified-accounts:
+  column-name: "Capstone Officials and Classified Accounts"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Yes"
+      before: "form1[0].Scopeandcomments[0].Subform6[0].CheckBox9[0]: "
+      after: "\n\tform1[0].Scopeandcomments[0].Subform6[0].CheckBox10[0]:"
+  - label:
+      label-name: "No"
+      before: "form1[0].Scopeandcomments[0].Subform6[0].CheckBox10[0]: "
+      after: "\n\tform1[0].Categories1[0].Subform29[0].Table6[0].Row1[0].CheckBox11[0]:"
+url-agency-organization-chart:
+  column-name: "URL to Agency Organization Chart"
+  type: text
+  before: "request additional information to facilitate review):\n\n"
+  after: "\n\n** Note: Box will expand to accommodate text"
+contact-information-for-agency-records-officer:
+  column-name: "Contact Information for Agency Records Officer"
+  type: text
+  before: "Contact Information for Agency Records Officer (Name, Email, and Phone):\n\n"
+  after: "\n\n** Note: Box will expand to accommodate text."
+contact-if-questions:
+  column-name: "Whom should NARA contact if there any questions"
+  type: text
+  before: "NOTE: only complete if different from above.\n\n"
+  after: "\n\n** Note: Box will expand to accommodate text."
+category-1:
+  column-name: "Category 1 Position Title/Role"
+  type: text-multi-row
+  before: "Category 1) The head of the agency, such as Secretary, Commissioner, Administrator, Chairman or equivalent. The very top\nexecutive of the agency.  For cabinet level agencies, this is typically a Secretary. For independent agencies, and components\nwithin cabinet level agencies, this may be a Commissioner, Administrator, Director, or a specialized title (such as “Archivist of\nthe United States”).  For other agencies, including Commissions and Boards, this may be a Chairman, Executive Director, a group\nof Commissioners, Council Members, Board Members, or the equivalent.  Most agencies will have one position for this category\n(although the one position may have multiple email accounts); some agencies, such as Commissions and Boards, may have\nmultiple positions in the category. *If no positions are identified, please briefly explain why (for example, “Not applicable; no\npositions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n (total number of accounts for this category;"
+category-1-total:
+  column-name: "Category 1 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 2)"
+category-2:
+  column-name: "Category 2 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 2) Principal assistants to the head of the agency (second tier of management), such as Under Secretaries, Assistant\nSecretaries, Assistant Commissioners, and/or their equivalents; this includes officers of the Armed Forces serving in\ncomparable position(s). Generally the second-tier of management within an agency, this may include Under Secretaries,\nAssistant Secretaries, Assistant Commissioners, Vice Chairmen, etc. Some agencies may use other terminology, such as\n“Associate.”  The number of positions at this level will vary greatly agency to agency. Some may only have one, such as an\nAssistant Commissioner, while others may have multiple, such as numerous Assistant Secretaries each with oversight of a\nspecific program, bureau, or line of business within the agency. *If no positions are identified, please briefly explain why (for\nexample, “Not applicable; no positions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "  
+  after: "\n(total number of accounts for this category;"
+category-2-total:
+  column-name: "Category 2 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 3)"    
+category-3:
+  column-name: "Category 3 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 3) Deputies of all positions in categories 1 and 2, and/or their equivalent(s). Most of the first- and second-tier\nexecutives covered in the first two categories have corresponding deputy position(s) that assist in the daily operations of the\nagency. This includes Deputy Secretaries, Deputy Commissioners, Deputy Assistant Commissioners, etc.  The number of deputy\npositions will also vary greatly from agency to agency. *If no positions are identified, please briefly explain why (for example,\n“Not applicable, no positions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n(total number of accounts for this category;"
+category-3-total:
+  column-name: "Category 3 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\n Category 4)"
+category-4:
+  column-name: "Category 4 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 4) Staff assistants to all positions in categories 1 and 2, such as special assistants, confidential assistants, military\nassistants, and/or aides. For those senior officials in categories 1 and 2, important work is often carried out by special\nassistants, confidential assistants, military assistants, aides, executive assistants, etc.   They may send email on behalf of senior\nofficials and/or their email account contains email closely related to the responsibilities and actions of the senior officials they\nsupport.  For example, a “special assistant” to the Secretary of Defense, or a “Counselor” to Secretary of Health and Human\nservices would fall into this category. *If no positions are identified, please briefly explain why (for example, “Not applicable,\nno positions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n\n(total number of accounts for this category;"
+category-4-total:
+  column-name: "Category 4 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 5)"    
+category-5:
+  column-name: "Category 5 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 5) Principal management positions, such as Chief Operating Officer, Chief Information Officer, and Chief Financial\nOfficer, and/or their equivalent(s). These positions tend to be those executives who have operational and management\nresponsibilities within an agency, including Chief Operating Officer, Chief Information Officer, Chief Knowledge Officer, Chief\nTechnology Officer, and Chief Financial Officer.  These positions are often required by statute or Executive Order.  For example,\nthe Chief Financial Officer Act and the Chief Technology Officer Act.  For some agencies, these positions may already be covered\nby other categories. *If no positions are identified, please briefly explain why (for example, “Not applicable; no positions in\nthis category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n\n(total number of accounts for this category"
+category-5-total:
+  column-name: "Category 5 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 6)"
+category-6:
+  column-name: "Category 6 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 6) Directors of significant program offices, and/or their equivalent(s). Those Directors (or equivalents, such as\nExecutive Directors, Managers, Directorates, or Chiefs) that oversee and manage major program offices, bureaus, or lines of\nbusiness that support the agency mission.  For example, many agencies will have a Director that oversees Congressional and\nLegislative affairs, or a Director that oversees one specific mission-related program office. For some agencies, these positions\nmay already be covered by other categories. *If no positions are identified, please briefly explain why (for example, “Not\napplicable; no positions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n\n(total number of accounts for this category;"
+category-6-total:
+  column-name: "Category 6 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 7)"    
+category-7:
+  column-name: "Category 7 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 7) Principal regional officials, such as Regional Administrators, and/or their equivalent(s). Those agencies with a\nregional structure must include the accounts of principal regional officials.  For most agencies with a regional presence this will\nbe limited to Regional Administrators, or those officials who are responsible for the management and operations of specific\nregional areas (e.g., an agency that has 10 regions to carry out mission-critical activities would include those 10 Regional\nAdministrators).  It does not pertain to the heads of individual offices within regions, such as, but not limited to, customer-\nservice centers, processing centers, or administrative offices that conduct routine activities (e.g., passport offices, or Social\nSecurity claims processing offices). *If no positions are identified, please briefly explain why (for example, “Not applicable; no\npositions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n(total number of accounts for this category;"
+category-7-total:
+  column-name: "Category 7 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 8)"    
+category-8:
+  column-name: "Category 8 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 8) Roles or positions that routinely and directly advise the above positions, including special advisers, General\nCounsels, Chiefs of Staff, Inspectors General, etc. Many management positions routinely provide advice and oversight to the\nagency in the course of daily business, and are involved in mission related policy formulation, implementation, and/or\ninterpretation.  This may include general program oversight, legal protection and oversight, and daily operations and\nmanagement. For most agencies this will include General Counsels, Chiefs of Staff, Inspectors General and special advisers (such\nas “Policy Advisors”) within the top tiers of the agency.  This does not include those that advise on purely administrative issues.\nFor example, a Chief of Staff within a lower tier of the agency would not be included in this category. *If no positions are\nidentified, please briefly explain why (for example, “Not applicable; no positions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n\n(total number of accounts for this category;"
+category-8-total:
+  column-name: "Category 8 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 9)"    
+category-9:
+  column-name: "Category 9 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 9) Roles and positions not represented above and filled by Presidential Appointment with Senate Confirmation\n(PAS positions). This category is a catch all for any position that was filled by Presidential Appointment with Senate\nConfirmation (PAS) but not represented in any of the other categories.  For most agencies the PAS positions will already be\ncaptured in categories 1 through 8, and no other PAS positions will need to be identified. *If no positions are identified, please\nbriefly explain why (for example, “Not applicable; no positions in this category exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n\n(total number of accounts for this category;"
+category-9-total:
+  column-name: "Category 9 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nCategory 10)"    
+category-10:
+  column-name: "Category 10 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  before: "Category 10) Additional roles and positions that predominately create permanent records related to mission critical functions\nor policy decisions and/or are of historical significance. These represent roles, positions, and/or programs within the agency\nthat predominantly create permanent records related to mission critical functions or policy decisions and/or are of historical\nsignificance.  This category is for those roles and positions that are appropriate for permanent retention, but not captured in the\nother nine (9) categories. *If no positions are identified, briefly explain why (for example, “Not applicable; no positions in this\ncategory exist.”)\n\n POSITION TITLE / ROLE # of Accounts\n\nADD REMOVE "
+  after: "\n(total number of accounts for this category;"
+category-10-total:
+  column-name: "Category 10 Total Accounts"
+  type: number
+  before: "(total number of accounts for this category; this number will auto-populate) "
+  after: "\n\nSECTION C:"
+agency-records-officer:
+  column-name: "Agency Records Officer"
+  type: text
+  before: "APPROVAL DATE\n\nAgency Records Officer "
+  after: " Approved"
+agency-records-officer-approval:
+  column-name: "Agency Records Officer Approval"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Approved"
+      before: "form1[0].Categories1[0].Subform29[0].Table6[0].Row1[0].CheckBox11[0]: "
+      after: "\n\tform1[0].Categories1[0].Subform29[0].Table6[0].Row2[0].CheckBox11[0]"
+agency-records-officer-approval-date:
+  column-name: "Agency Records Officer Approval Date"
+  type: text
+  before: "Approved "
+  after: "\n\nSenior Agency Official"
+senior-agency-official:
+  column-name: "Senior Agency Official"
+  type: text
+  before: "Records Management "
+  after: " Approved"
+senior-agency-official-approval:
+  column-name: "Senior Agency Official Approval"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Approved"
+      before: "form1[0].Categories1[0].Subform29[0].Table6[0].Row2[0].CheckBox11[0]: "
+      after: "\n\tform1[0].Categories1[0].Subform30[0].Table9[0].Row1[0].CheckBox12[0]:"
+senior-agency-official-approval-date:
+  column-name: "Senior Agency Official Approval Date"
+  type: text
+  before: "Approved "
+  after: "\n\nSubmit this form as an attachment"

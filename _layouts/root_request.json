@@ -1,0 +1,4 @@
+{% assign url = page.url | remove: "/api/" | remove: ".json" %}
+{% assign url_components = url | split: "/" %}
+{% assign data_file_name = url_components[0] %}
+{{ site.data[data_file_name] | jsonify }}

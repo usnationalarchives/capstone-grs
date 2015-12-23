@@ -1,0 +1,23 @@
+{% assign url = page.url | remove: "/api/" | remove: ".json" %}
+{% assign url_components = url | split: "/" %}
+{% assign data_file_name = url_components[0] %}
+
+{% assign api_requested_column = url_components[1] %}
+{% assign api_requested_element = url_components[2] %}
+
+{% for header in site.data[data_file_name].first %}
+	{% assign sanitized_header = header[0] | sanitize_string %}		
+	{% if sanitized_header == api_requested_column %}
+		{% assign normal_header = header[0] %}
+	{% endif %}
+{% endfor %}	
+
+{% assign records = site.emptyArray %}
+
+{% for row in site.data[data_file_name] %}
+	{% assign sanitized_element = row[normal_header] | sanitize_string %}		
+	{% if sanitized_element == api_requested_element %}
+		{% assign records = records | push: row %}
+	{% endif %}
+{% endfor %}	
+{{ records | jsonify }}

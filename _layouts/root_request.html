@@ -1,0 +1,44 @@
+---
+title: "test"
+layout: default
+---  
+{% include navbar.html %}
+
+{% assign url = page.url | remove: "/api/" | remove: ".html" %}
+{% assign url_components = url | split: "/" %}
+{% assign data_file_name = url_components[0] %}
+
+<div id="api" class="home">     
+
+  <table id="table" 
+    data-toggle="table" 
+    data-search="true" 
+    data-show-refresh="true" 
+    data-show-columns="true" 
+    data-show-export="true" 
+    data-pagination="true" 
+    data-page-list="[10, 25, 50, 100, ALL]" 
+    data-show-toggle="true"
+    data-url="{{site.baseurl}}/api/{{ data_file_name }}.json">        
+    <thead>
+      <tr>
+        {% for element in site.data[data_file_name].first %}
+          <th data-field="{{ element[0] }}" 
+              data-sortable="true" 
+              data-formatter="{{element[0] | sanitize_string | replace: "-", "" }}Formatter">
+            <a href="{{site.baseurl}}/api/{{ data_file_name }}/{{ element[0] | sanitize_string }}.html">{{ element[0] }}</a>
+          </th>
+        {% endfor %}                        
+      </tr>
+    </thead>
+  </table>
+</div>
+
+{% for element in site.data[data_file_name].first %}
+  <script type="text/javascript">
+    function {{ element[0] | sanitize_string | replace: "-", "" }}Formatter(value) {       
+      var partial = "{{site.baseurl}}/api/{{ data_file_name }}/{{ element[0] | sanitize_string }}";
+      return getLinkUrl(partial, value);
+    }
+  </script>
+{% endfor %}                        

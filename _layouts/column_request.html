@@ -1,0 +1,49 @@
+---
+title: "test"
+layout: default
+---  
+{% include navbar.html %}
+
+{% assign url = page.url | remove: "/api/" | remove: ".html" %}
+{% assign url_components = url | split: "/" %}
+{% assign data_file_name = url_components[0] | downcase %}
+
+{% assign api_requested_column = url_components[1] | downcase %}
+{% for column_name in site.data[data_file_name].first %}		
+	{% assign normalized_column_name =  column_name.first | sanitize_string %}
+	{% if normalized_column_name == api_requested_column %}
+		{% assign api_requested_column = column_name.first %}
+	{% endif %}
+{% endfor %}
+
+<div id="api" class="home">     
+
+  <table id="table" 
+    data-toggle="table" 
+    data-search="true" 
+    data-show-refresh="true" 
+    data-show-columns="true" 
+    data-show-export="true" 
+    data-pagination="true" 
+    data-page-list="[10, 25, 50, 100, ALL]" 
+    data-show-toggle="true"       
+    data-url="{{ site.baseurl }}/api/{{ data_file_name }}/{{ api_requested_column | sanitize_string }}.json">
+    <thead>
+      <tr>					
+				<th data-field="{{ api_requested_column }}" 
+            data-sortable="true"
+            data-formatter="{{ api_requested_column | sanitize_string | replace: "-", "" }}Formatter">
+          <a href="{{ site.baseurl }}/api/{{ data_file_name }}/{{ api_requested_column | sanitize_string }}.html">{{ api_requested_column }}</a>
+        </th>
+      </tr>
+    </thead>
+  </table>
+
+</div>
+
+<script type="text/javascript">
+  function {{ api_requested_column | sanitize_string | replace: "-", "" }}Formatter(value) {
+    var partial = "{{ site.baseurl }}/api/{{ data_file_name }}/{{ api_requested_column | sanitize_string }}";
+    return getLinkUrl(partial, value);
+  }    
+</script>

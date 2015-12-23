@@ -1,0 +1,52 @@
+---
+title: "test"
+layout: default
+---  
+{% include navbar.html %}
+
+{% assign url = page.url | remove: "/api/" | remove: ".html" %}
+{% assign url_components = url | split: "/" %}
+{% assign data_file_name = url_components[0] %}
+
+{% assign api_requested_column = url_components[1] %}
+{% assign api_requested_element = url_components[2] %}
+
+<div id="api" class="home">     
+
+  <table id="table" 
+      data-toggle="table" 
+      data-search="true" 
+      data-show-refresh="true" 
+      data-show-columns="true" 
+      data-show-export="true" 
+      data-pagination="true" 
+      data-page-list="[10, 25, 50, 100, ALL]" 
+      data-show-toggle="true"
+      data-url="{{ site.baseurl }}/api/{{ data_file_name }}/{{ api_requested_column }}/{{ api_requested_element }}.json">        
+      <thead>
+        <tr>
+					{% for header in site.data[data_file_name].first %}
+						{% assign sanitized_header = header[0] | sanitize_string %}		
+						{% if sanitized_header == api_requested_column %}
+							{% assign normal_header = header[0] %}
+						{% endif %}
+						<th data-field="{{ header[0] }}" 
+                data-sortable="true"
+                data-formatter="{{ header[0] | sanitize_string | replace: "-", "" }}Formatter">
+              <a href="{{ site.baseurl }}/api/{{ data_file_name }}/{{ header[0] | sanitize_string }}.html">{{ header[0] }}</a>
+            </th>
+					{% endfor %}	                      
+        </tr>
+      </thead>
+  </table>
+
+</div>
+
+{% for header in site.data[data_file_name].first %}
+<script type="text/javascript">
+  function {{ header[0] | sanitize_string | replace: "-", "" }}Formatter(value) {    
+    var partial = "{{ site.baseurl }}/api/{{ data_file_name }}/{{ header[0] | sanitize_string }}";
+    return getLinkUrl(partial, value);
+  }    
+</script>
+{% endfor %}  

@@ -1,0 +1,14 @@
+---
+title: API endpoints
+---
+{% assign endpoints = site.emptyArray %}
+{% for datafile in site.data %}
+
+	{% assign entry = site.emptyArray %}
+	{% capture endpoint_url %}/api/{{ datafile[0] }}{% endcapture %}
+	{% assign entry = entry | push: endpoint_url %}
+	{% assign entry = entry | push: "info" %}
+			
+	{% assign endpoints = endpoints | push: entry %}
+{% endfor %}
+{{ endpoints | jsonify }}

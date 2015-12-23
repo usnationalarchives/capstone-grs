@@ -1,0 +1,20 @@
+---
+title: API Data Files
+layout: default
+---
+{% include navbar.html %}
+<div id="api" class="home">	
+	<h2>Available Data Files</h2>
+	<ul>
+	{% assign endpoints = site.emptyArray %}
+	{% for datafile in site.data %}
+		{% capture endpoint_url %}/api/{{ datafile[0] }}{% endcapture %}				
+		<li>
+			<a href="{{ site.baseurl }}{{endpoint_url}}.html">{{ site.baseurl }}{{endpoint_url}}.html</a>
+			<br/>
+			<a href="{{ site.baseurl }}{{endpoint_url}}.json">{{ site.baseurl }}{{endpoint_url}}.json</a>
+		</li>	
+	{% endfor %}
+	</ul>
+</div>
+

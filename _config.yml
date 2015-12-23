@@ -1,0 +1,11 @@
+# Site settings
+title: Capstone GRS
+email: davidnaffis@gmail.com
+description: Capstone GRS Website
+baseurl: "/capstone-grs" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+
+emptyArray: []
+
+# Build settings
+markdown: kramdown
