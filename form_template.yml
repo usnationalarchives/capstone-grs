@@ -82,8 +82,8 @@ legacy-email-scope:
   type: text
   before: "dating back to approximately 2010.”)\n\n"
   after: "\n\nNOYES\nCapstone Officials"
-capstone-officials-and-classified-accounts:
-  column-name: "Capstone Officials and Classified Accounts"
+classified-accounts:
+  column-name: "Classified Accounts"
   type: checkbox
   labels:
   - label:
