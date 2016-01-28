@@ -42,6 +42,7 @@ module Jekyll
       # go through all pdf files, extract data, and add to the csv
       file_names.each do |filename|        
         begin
+          puts "attempting to process #{filename}"
           # reset offset 
           offset = 0
 
@@ -78,7 +79,7 @@ module Jekyll
           # add generated csv row to the csv data
           data << csv_row
         rescue
-          puts "#{filename} failed to process"
+          puts "Processing of #{filename} failed"
         end
       end
 
