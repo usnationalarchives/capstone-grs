@@ -41,43 +41,45 @@ module Jekyll
 
       # go through all pdf files, extract data, and add to the csv
       file_names.each do |filename|        
-        # reset offset 
-        offset = 0
+        begin
+          # reset offset 
+          offset = 0
 
-        # create array to store this file's CSV row data
-        csv_row = []
+          # create array to store this file's CSV row data
+          csv_row = []
 
-        # get full path of the pdf filename
-        path = File.join(site.source, forms_dir, filename)
+          # get full path of the pdf filename
+          path = File.join(site.source, forms_dir, filename)
 
-        # convert pdf to readable text
-        # pdf_text = Yomu.new(File.join(base, filename)).text
-        pdf = Origami::PDF.read(File.join(base, filename))        
-        o = pdf.grep("xfa\:data")
-        pdf_text = o.first.data.gsub(/\n/, '')
+          # convert pdf to readable text
+          # pdf_text = Yomu.new(File.join(base, filename)).text
+          pdf = Origami::PDF.read(File.join(base, filename))        
+          o = pdf.grep("xfa\:data")
+          pdf_text = o.first.data.gsub(/\n/, '')
 
-        # look for each item specified in the form template
-        form_template.each do |key, item|
-          # reset found_item to empty string
-          found_item = ""
-          item_type = item['type']
-          if item_type == 'text' 
-            found_item, offset = get_text_input(item, offset, pdf_text)
-            found_item = found_item.gsub(".00000000", "")
-          elsif item_type == 'number'
-            found_item, offset = get_text_input(item, offset, pdf_text)            
-            found_item = found_item.gsub(".00000000", "")
-          elsif item_type == 'text-multi-row'
-            found_item, offset = get_multi_text_input(item, offset, pdf_text)
-          elsif item['type'] == 'checkbox'
-            found_item, offset = get_checkbox_input(item['labels'], offset, pdf_text)
-          end          
-          # add the item found to the csv row
-          csv_row << found_item          
+          # look for each item specified in the form template
+          form_template.each do |key, item|
+            # reset found_item to empty string
+            found_item = ""
+            item_type = item['type']
+            if item_type == 'text' 
+              found_item, offset = get_text_input(item, offset, pdf_text)
+            elsif item_type == 'number'
+              found_item, offset = get_text_input(item, offset, pdf_text)              
+            elsif item_type == 'text-multi-row'
+              found_item, offset = get_multi_text_input(item, offset, pdf_text)
+            elsif item['type'] == 'checkbox'
+              found_item, offset = get_checkbox_input(item['labels'], offset, pdf_text)
+            end          
+            # add the item found to the csv row
+            csv_row << found_item.gsub(".00000000", "")       
+          end
+
+          # add generated csv row to the csv data
+          data << csv_row
+        rescue
+          puts "#{filename} failed to process"
         end
-
-        # add generated csv row to the csv data
-        data << csv_row
       end
 
       # save the csv as a file in the data_dir directory
