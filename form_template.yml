@@ -110,7 +110,7 @@ contact-if-questions:
   before: "<TextField8>"
   after: "</TextField8>"
 category-1:
-  column-name: "Category 1 Position Title/Role"
+  column-name: "Category 1 Position Title/Role and Number of Accounts"
   type: text-multi-row
   begin: "<Cat1>"
   end: "</Cat1>"
