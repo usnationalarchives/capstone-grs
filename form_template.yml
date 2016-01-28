@@ -313,5 +313,5 @@ senior-agency-official-approval:
 senior-agency-official-approval-date:
   column-name: "Senior Agency Official Approval Date"
   type: text
-  before: "<DateField1>"
-  after: "</DateField1>"
+  before: "<DateField2>"
+  after: "</DateField2>"
