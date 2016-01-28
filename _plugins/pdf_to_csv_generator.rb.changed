@@ -1,9 +1,8 @@
 module Jekyll
   require 'csv'
   require 'yaml'
-  require 'origami'
-  include Origami
-  
+  require 'yomu' 
+
   # class PdfToCsv < Page
   #   def initialize(site, base, dir, template, filename)      
   #     @site = site
@@ -51,27 +50,23 @@ module Jekyll
         path = File.join(site.source, forms_dir, filename)
 
         # convert pdf to readable text
-        # pdf_text = Yomu.new(File.join(base, filename)).text
-        pdf = Origami::PDF.read(File.join(base, filename))        
-        o = pdf.grep("xfa\:data")
-        pdf_text = o.first.data.gsub(/\n/, '')
+        pdf_text = Yomu.new(File.join(base, filename)).text
+
+        # remove footer in case there's a page break within a data block
+        footer_string_regexp = Regexp.new("Page [0-9]+ of [0-9]+National Archives and Records Administration NA Form 1005 \\(08-15\\)")
+        pdf_text = pdf_text.gsub(footer_string_regexp, "")
 
         # look for each item specified in the form template
         form_template.each do |key, item|
           # reset found_item to empty string
           found_item = ""
           item_type = item['type']
-          if item_type == 'text' 
+          if item_type == 'text' || item_type == 'text-multi-row' || item_type == 'number'
             found_item, offset = get_text_input(item, offset, pdf_text)
-            found_item = found_item.gsub(".00000000", "")
-          elsif item_type == 'number'
-            found_item, offset = get_text_input(item, offset, pdf_text)            
-            found_item = found_item.gsub(".00000000", "")
-          elsif item_type == 'text-multi-row'
-            found_item, offset = get_multi_text_input(item, offset, pdf_text)
           elsif item['type'] == 'checkbox'
-            found_item, offset = get_checkbox_input(item['labels'], offset, pdf_text)
-          end          
+            found_item = get_checkbox_input(item['labels'], offset, pdf_text)
+          end
+
           # add the item found to the csv row
           csv_row << found_item          
         end
@@ -112,60 +107,44 @@ module Jekyll
 
     def find_index(target_string, offset, text)
       escaped_target_string = Regexp.escape(target_string)
-      target_string_regexp = Regexp.new(escaped_target_string)      
+      target_string_regexp = Regexp.new(escaped_target_string)
       index = text.index(target_string_regexp, offset)
       return index
     end
 
     def get_text_input(item, offset, pdf_text)
       found_item = ""
+      puts "item: #{item['column-name']}"
       index_start = find_index(item['before'], offset, pdf_text)
+      puts "index_start: #{index_start}"
       offset = index_start.nil? ? offset : index_start
-      index_end = (find_index(item['after'], index_start, pdf_text)) unless index_start.nil?
-
+      puts "offset: #{offset}"
+      index_end = find_index(item['after'], index_start, pdf_text)
+      puts "index_end: #{index_end}"
+      
       if index_start && index_end
         # increment offset so we don't search the same text again
         offset = index_end
 
         index_start = index_start + item['before'].length
         length = index_end - index_start
-        found_item = pdf_text.slice(index_start, length)     
-      end
+        found_item = pdf_text.slice(index_start, length)
 
-      if found_item.nil?
-        found_item = ""
-      else
-        found_item = found_item.gsub("&#xD;", ", ")
+        if !found_item.nil? && item['type'] == 'text-multi-row'
+          values = found_item.split(Regexp.new("[\\n]+ADD REMOVE"))
+          values.each_with_index do |v,i|            
+            number_index = v.index(Regexp.new("[0-9]+$"))
+            text_value = v[0..(number_index-1)]
+            number_value = v[number_index..-1]
+            values[i] = "Title/Role: #{text_value}, Accounts: #{number_value}"            
+          end
+          found_item = values.join("; ")
+        elsif !found_item.nil? && item['type'] == 'number'
+          found_item = found_item.match(Regexp.new("^[0-9]+"))
+        end
       end
-
+      puts "found_item: #{found_item}"
       return found_item, offset
-    end
-
-    def get_multi_text_input(item, offset, pdf_text)
-      found_rows = ""      
-      fields = item['fields']
-      
-      index_start = find_index(item['begin'], offset, pdf_text)
-      index_end = find_index(item['end'], offset, pdf_text)            
-      length = index_end - index_start
-      pdf_section = pdf_text.slice(index_start, length)    
-      
-      offset = 0
-      
-      # go through each row
-      next_item_index = true      
-      while !next_item_index.nil?
-        found_row = ""
-        # go through each field in the row
-        fields.each do |field|                    
-          found_item, offset = get_text_input(field, offset, pdf_section)
-          found_row = (found_row.split(", ") << found_item).join(", ")          
-        end        
-        found_rows = (found_rows.split(";") << found_row).join("; ")
-        next_item_index = find_index(fields.first['before'], offset, pdf_section)
-      end
-
-      return found_rows, index_start
     end
 
     def get_checkbox_input(checkboxes, offset, pdf_text) 
@@ -174,14 +153,12 @@ module Jekyll
       checkboxes.each do |label|
         label = label['label']
         index_start = find_index(label['before'], offset, pdf_text)
-        index_end = find_index(label['after'], index_start, pdf_text)
+        index_end = find_index(label['after'], offset, pdf_text)
         
         if index_start && index_end
-          offset = index_end
-
           index_start = index_start + label['before'].length          
           length = index_end - index_start
-          value = pdf_text.slice(index_start, length)
+          value = pdf_text.slice(index_start, length)          
 
           unless value.nil?
             if value == "1" || value == "On"
@@ -193,7 +170,7 @@ module Jekyll
 
         end
       end
-      return found_item, offset
+      return found_item
     end
 
     # this can be cleaned up into one or two regex's
