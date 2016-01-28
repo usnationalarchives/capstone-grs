@@ -3,19 +3,6 @@ module Jekyll
   require 'yaml'
   require 'origami'
   include Origami
-  
-  # class PdfToCsv < Page
-  #   def initialize(site, base, dir, template, filename)      
-  #     @site = site
-  #     @base = base
-  #     @dir = dir
-  #     @name = filename   
-      
-  #     self.process(@name)
-  #     self.read_yaml(File.join(base, '_layouts'), template)
-  #     self.data[filename] = ""
-  #   end
-  # end
 
   class PdfToCsvGenerator < Jekyll::Generator
     safe true
