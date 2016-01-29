@@ -42,8 +42,8 @@ module Jekyll
           # convert pdf to readable text
           # pdf_text = Yomu.new(File.join(base, filename)).text
           pdf = Origami::PDF.read(File.join(base, filename))        
-          o = pdf.grep("xfa\:data")
-          pdf_text = o.first.data.gsub(/\n/, '')
+          o = pdf.grep("xfa\:datasets")
+          pdf_text = o.last.data.gsub(/\n/, '')
 
           # look for each item specified in the form template
           form_template.each do |key, item|
