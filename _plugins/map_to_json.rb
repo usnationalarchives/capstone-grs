@@ -1,3 +1,4 @@
+# this method converts an array of hashes to json
 module Jekyll
   module MapToJsonFilter
     def map_to_json(array, index)     	

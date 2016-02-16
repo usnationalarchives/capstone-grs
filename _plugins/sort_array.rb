@@ -1,3 +1,4 @@
+# this method sorts an array, deleting nil values in the process
 module Jekyll
   module SortArrayFilter
     def sort_array(array) 

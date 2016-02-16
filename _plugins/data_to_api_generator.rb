@@ -1,3 +1,4 @@
+# this file converts data stored in site.data to html pages to mimic api calls
 module Jekyll
   require 'csv'
 

@@ -1,3 +1,4 @@
+# this method sanitizes and concatenates a string primarily for URLs
 module Jekyll
   module SanitizeStringFilter
     def sanitize_string(input)

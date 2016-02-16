@@ -1,3 +1,4 @@
+# this method returns an array of unique values
 module Jekyll
   module UniqueArrayFilter
     def unique_array(array)    	

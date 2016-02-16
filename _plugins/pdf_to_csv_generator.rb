@@ -1,3 +1,4 @@
+# this class extracts data from PDF forms and stores it in site.data
 module Jekyll
   require 'csv'
   require 'yaml'
