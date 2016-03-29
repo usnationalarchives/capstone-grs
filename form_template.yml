@@ -60,6 +60,10 @@ grs-items-proposed-for-use:
       label-name: "ITEM 012"
       before: "<CheckBox6>"
       after: "</CheckBox6>"
+  - label:
+      label-name: "ITEM 014"
+      before: "<CheckBox12>"
+      after: "</CheckBox12>"
 implementation-scope:
   column-name: "Implementation Scope for this Submission"
   type: checkbox
