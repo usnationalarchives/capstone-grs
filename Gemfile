@@ -6,3 +6,5 @@ gem "yomu"
 gem "travis"
 gem "rake"
 gem "origami"
+gem 'hashie'
+gem 'crack'

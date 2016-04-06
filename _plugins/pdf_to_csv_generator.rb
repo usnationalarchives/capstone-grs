@@ -3,6 +3,11 @@ module Jekyll
   require 'csv'
   require 'yaml'
   require 'origami'
+  require 'crack' # for xml and json
+  require 'crack/json' # for just json
+  require 'crack/xml' # for just xml
+  require 'hashie'
+
   include Origami
 
   class PdfToCsvGenerator < Jekyll::Generator
@@ -31,8 +36,6 @@ module Jekyll
       file_names.each do |filename|        
         begin
           puts "[Debug] Attempting to process #{filename}"
-          # reset offset 
-          offset = 0
 
           # create array to store this file's CSV row data
           csv_row = []
@@ -46,19 +49,23 @@ module Jekyll
           o = pdf.grep("xfa\:datasets")
           pdf_text = o.last.data.gsub(/\n/, '')
 
+          pdf_mash = Hashie::Mash.new(Crack::XML.parse(pdf_text))
+          pdf_mash = pdf_mash['xfa:datasets']['xfa:data']
+          pdf_mash.extend Hashie::Extensions::DeepFind
+
           # look for each item specified in the form template
           form_template.each do |key, item|
             # reset found_item to empty string
             found_item = ""
             item_type = item['type']
             if item_type == 'text' 
-              found_item, offset = get_text_input(item, offset, pdf_text)
+              found_item = get_text_input(item, pdf_mash)
             elsif item_type == 'number'
-              found_item, offset = get_text_input(item, offset, pdf_text)              
+              found_item = get_text_input(item, pdf_mash)              
             elsif item_type == 'text-multi-row'
-              found_item, offset = get_multi_text_input(item, offset, pdf_text)
+              found_item = get_multi_text_input(item, pdf_mash)
             elsif item['type'] == 'checkbox'
-              found_item, offset = get_checkbox_input(item['labels'], offset, pdf_text)
+              found_item = get_checkbox_input(item['labels'], pdf_mash)
             end          
             # add the item found to the csv row
             csv_row << found_item.gsub(".00000000", "")       
@@ -66,8 +73,8 @@ module Jekyll
 
           # add generated csv row to the csv data
           data << csv_row
-        rescue
-          puts "[ERROR] Processing of #{filename} failed"
+        rescue Exception => e
+          puts "[ERROR] Processing of #{filename} failed, #{e}"
         end
       end
 
@@ -87,9 +94,6 @@ module Jekyll
     end
 
     def save_to_site_data(site, data)
-     # site.data['fo'] = []
-      # site.data['fo'] << data.map(&:to_hash)
-
       csv_string = CSV.generate do |csv|
         data.each do |row|
           csv << row
@@ -101,90 +105,49 @@ module Jekyll
       site.data['forms'] = table.map(&:to_hash)
     end
 
-    def find_index(target_string, offset, text)
-      escaped_target_string = Regexp.escape(target_string)
-      target_string_regexp = Regexp.new(escaped_target_string)      
-      index = text.index(target_string_regexp, offset)
-      return index
+    def get_text_input(item, pdf_mash)
+      found_item = pdf_mash.deep_find(item['match'])
+      found_item = "" if found_item.nil? 
+      return found_item
     end
 
-    def get_text_input(item, offset, pdf_text)
-      found_item = ""
-      index_start = find_index(item['before'], offset, pdf_text)
-      offset = index_start.nil? ? offset : index_start
-      index_end = (find_index(item['after'], index_start, pdf_text)) unless index_start.nil?
-
-      if index_start && index_end
-        # increment offset so we don't search the same text again
-        offset = index_end
-
-        index_start = index_start + item['before'].length
-        length = index_end - index_start
-        found_item = pdf_text.slice(index_start, length)     
-      end
-
-      if found_item.nil?
-        found_item = ""
-      else
-        found_item = found_item.gsub("&#xD;", ", ")
-      end
-
-      return found_item, offset
-    end
-
-    def get_multi_text_input(item, offset, pdf_text)
+    def get_multi_text_input(item, pdf_mash)      
       found_rows = ""      
       fields = item['fields']
-      
-      index_start = find_index(item['begin'], offset, pdf_text)
-      index_end = find_index(item['end'], offset, pdf_text)            
-      length = index_end - index_start
-      pdf_section = pdf_text.slice(index_start, length)    
-      
-      offset = 0
-      
-      # go through each row
-      next_item_index = true      
-      while !next_item_index.nil?
+      field_set = pdf_mash.deep_find(item['match'])
+
+      field_set.extend(Hashie::Extensions::DeepLocate)
+      mash_fields = field_set.deep_locate("TextField11")
+
+      mash_fields.each do |m|
         found_row = ""
-        # go through each field in the row
-        fields.each do |field|                    
-          found_item, offset = get_text_input(field, offset, pdf_section)
+        fields.each do |field|           
+          m.extend Hashie::Extensions::DeepFind         
+          found_item = get_text_input(field, m)
           found_row = (found_row.split(", ") << found_item).join(", ")          
         end        
-        found_rows = (found_rows.split(";") << found_row).join("; ")
-        next_item_index = find_index(fields.first['before'], offset, pdf_section)
+        found_rows = (found_rows.split(";") << found_row).join("; ")        
       end
 
-      return found_rows, index_start
+      return found_rows
     end
 
-    def get_checkbox_input(checkboxes, offset, pdf_text) 
+    def get_checkbox_input(checkboxes, pdf_mash) 
       found_item = ""           
       
       checkboxes.each do |label|
         label = label['label']
-        index_start = find_index(label['before'], offset, pdf_text)
-        index_end = find_index(label['after'], index_start, pdf_text)
-        
-        if index_start && index_end
-          offset = index_end
+        value = get_text_input(label, pdf_mash)
 
-          index_start = index_start + label['before'].length          
-          length = index_end - index_start
-          value = pdf_text.slice(index_start, length)
-
-          unless value.nil?
-            if value == "1" || value == "On"
-              found_item = (found_item.split(",") << label['label-name']).join(", ")
-            elsif value.empty? || value == "Off"
-              # not checked
-            end
+        unless value.nil?
+          if value == "1" || value == "On"
+            found_item = (found_item.split(",") << label['label-name']).join(", ")
+          elsif value.empty? || value == "Off"
+            # not checked
           end
-
         end
       end
-      return found_item, offset
+      return found_item
     end
 
     # this can be cleaned up into one or two regex's

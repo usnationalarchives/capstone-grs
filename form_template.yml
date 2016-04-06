@@ -1,317 +1,250 @@
 number: 
   column-name: "Number"
   type: text
-  before: "<TextField1>"
-  after: "</TextField1>"
+  match: "TextField1"  
 received-date:
   column-name: "Received Date"
   type: text
-  before: "<DateField4>"
-  after: "</DateField4>"
+  match: "DateField4"  
 total-accounts: 
   column-name: "Total Accounts"
   type: text
-  before: "<NumericField1>"
-  after: "</NumericField1>"
+  match: "NumericField1"  
 agency-name:
   column-name: "Name of Agency to Which this Form Applies"
   type: text
-  before: "<TextField4>"
-  after: "</TextField4>"
+  match: "TextField4"
 record-group-number:
   column-name: "Record Group Number"
   type: text
-  before: "<TextField5>"
-  after: "</TextField5>"
+  match: "TextField5"
 superceding-previous-submission:
   column-name: "Superseding a Previous Submission"
   type: checkbox
   labels:
   - label:
       label-name: "Yes"
-      before: "<CheckBox1>"
-      after: "</CheckBox1>"
+      match: "CheckBox1"
   - label:
       label-name: "No"
-      before: "<CheckBox2>"
-      after: "</CheckBox2>"
+      match: "CheckBox2"
 previous-tracking-number:
   column-name: "Previous Tracking Number"
   type: text
-  before: "<TextField6>"
-  after: "</TextField6>"
+  match: "TextField6"
 grs-items-proposed-for-use:
   column-name: "GRS 6.1 Item(s) Proposed for Use"
   type: checkbox
   labels:
   - label:
       label-name: "All"
-      before: "<CheckBox3>"
-      after: "</CheckBox3>"
+      match: "CheckBox3"
   - label:
       label-name: "ITEM 010"
-      before: "<CheckBox4>"
-      after: "</CheckBox4>"
+      match: "CheckBox4"
   - label:
       label-name: "ITEM 011"
-      before: "<CheckBox5>"
-      after: "</CheckBox5>"
+      match: "CheckBox5"
   - label:
       label-name: "ITEM 012"
-      before: "<CheckBox6>"
-      after: "</CheckBox6>"
+      match: "CheckBox6"
 implementation-scope:
   column-name: "Implementation Scope for this Submission"
   type: checkbox
   labels:
   - label:
       label-name: "Agency-Wide"
-      before: "<CheckBox7>"
-      after: "</CheckBox7>"
+      match: "CheckBox7"
   - label:
       label-name: "Component/Office"
-      before: "<CheckBox8>"
-      after: "</CheckBox8>"
+      match: "CheckBox8"
 additional-scope-comments:
   column-name: "Additional Scope Comments"
   type: text
-  before: "<TextField7>"
-  after: "</TextField7>"
+  match: "TextField7"
 legacy-email-scope:
   column-name: "Legacy Email Scope"
   type: text
-  before: "<TextField8>"
-  after: "</TextField8>"
+  match: "TextField8"
 classified-accounts:
   column-name: "Classified Accounts"
   type: checkbox
   labels:
   - label:
       label-name: "No"
-      before: "<CheckBox10>"
-      after: "</CheckBox10>"
+      match: "CheckBox10"
   - label:
       label-name: "Yes"
-      before: "<CheckBox9>"
-      after: "</CheckBox9>"
+      match: "CheckBox9"
 url-agency-organization-chart:
   column-name: "URL to Agency Organization Chart"
   type: text
-  before: "<TextField8>"
-  after: "</TextField8>"
+  match: "TextField8"
 contact-information-for-agency-records-officer:
   column-name: "Contact Information for Agency Records Officer"
   type: text
-  before: "<TextField8>"
-  after: "</TextField8>"
+  match: "TextField8"
 contact-if-questions:
   column-name: "Whom should NARA contact if there any questions"
   type: text
-  before: "<TextField8>"
-  after: "</TextField8>"
+  match: "TextField8"
 category-1:
   column-name: "Category 1 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat1>"
-  end: "</Cat1>"
+  match: "Cat1"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>"
+    match: "NumericField2"
 category-1-total:
   column-name: "Category 1 Total Accounts"
   type: number
-  before: "<Cat1Total>"
-  after: "</Cat1Total>"
+  match: "Cat1Total"  
 category-2:
   column-name: "Category 2 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat2>"
-  end: "</Cat2>"
+  match: "Cat2"  
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"    
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>"
+    match: "NumericField2"
 category-2-total:
   column-name: "Category 2 Total Accounts"
   type: number
-  before: "<Cat2Total>"
-  after: "</Cat2Total>"
+  match: "Cat2Total"
 category-3:
   column-name: "Category 3 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat3>"
-  end: "</Cat3>"
+  match: "Cat3"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>"
+    match: "NumericField2"
 category-3-total:
   column-name: "Category 3 Total Accounts"
   type: number
-  before: "<Cat3Total>"
-  after: "</Cat3Total>"
+  match: "Cat3Total"
 category-4:
   column-name: "Category 4 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat4>"
-  end: "</Cat4>"
+  match: "Cat4"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>"
+    match: "NumericField2"
 category-4-total:
   column-name: "Category 4 Total Accounts"
   type: number
-  before: "<Cat4Total>"
-  after: "</Cat4Total>"
+  match: "Cat4Total"
 category-5:
   column-name: "Category 5 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat5>"
-  end: "</Cat5>"
+  match: "Cat5"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>"
+    match: "NumericField2"
 category-5-total:
   column-name: "Category 5 Total Accounts"
   type: number
-  before: "<Cat5Total>"
-  after: "</Cat5Total>"
+  match: "Cat5Total"
 category-6:
   column-name: "Category 6 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat6>"
-  end: "</Cat6>"
+  match: "Cat6"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>" 
+    match: "NumericField2"
 category-6-total:
   column-name: "Category 6 Total Accounts"
   type: number
-  before: "<Cat6Total>"
-  after: "</Cat6Total>"
+  match: "Cat6Total"
 category-7:
   column-name: "Category 7 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat7>"
-  end: "</Cat7>"
+  match: "Cat7"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>" 
+    match: "NumericField2"
 category-7-total:
   column-name: "Category 7 Total Accounts"
   type: number
-  before: "<Cat7Total>"
-  after: "</Cat7Total>"
+  match: "Cat7Total"
 category-8:
   column-name: "Category 8 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat8>"
-  end: "</Cat8>"
+  match: "Cat8"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>"
+    match: "NumericField2"
 category-8-total:
   column-name: "Category 8 Total Accounts"
   type: number
-  before: "<Cat8Total>"
-  after: "</Cat8Total>"
+  match: "Cat8Total"
 category-9:
   column-name: "Category 9 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat9>"
-  end: "</Cat9>"
+  match: "Cat9"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>" 
+    match: "NumericField2"
 category-9-total:
   column-name: "Category 9 Total Accounts"
   type: number
-  before: "<Cat9Total>"
-  after: "</Cat9Total>"
+  match: "Cat9Total"
 category-10:
   column-name: "Category 10 Position Title/Role and Number of Accounts"
   type: text-multi-row
-  begin: "<Cat10>"
-  end: "</Cat10>"
+  match: "Cat10"
   fields:
   - field:
-    before: "<TextField11>"
-    after: "</TextField11>"
+    match: "TextField11"
   - field:
-    before: "<NumericField2>"
-    after: "</NumericField2>" 
+    match: "NumericField2"
 category-10-total:
   column-name: "Category 10 Total Accounts"
   type: number
-  before: "<Cat10Total>"
-  after: "</Cat10Total>"
+  match: "Cat10Total"
 agency-records-officer:
   column-name: "Agency Records Officer"
   type: text
-  before: "<TextField12>"
-  after: "</TextField12>"
+  match: "TextField12"
 agency-records-officer-approval:
   column-name: "Agency Records Officer Approval"
   type: checkbox
   labels:
   - label:
       label-name: "Approved"
-      before: "<CheckBox11>"
-      after: "</CheckBox11>"
+      match: "CheckBox11"
 agency-records-officer-approval-date:
   column-name: "Agency Records Officer Approval Date"
   type: text
-  before: "<DateField1>"
-  after: "</DateField1>"
+  match: "DateField1"
 senior-agency-official:
   column-name: "Senior Agency Official"
   type: text
-  before: "<TextField13>"
-  after: "</TextField13>"
+  match: "TextField13"
 senior-agency-official-approval:
   column-name: "Senior Agency Official Approval"
   type: checkbox
   labels:
   - label:
       label-name: "Approved"
-      before: "<CheckBox11>"
-      after: "</CheckBox11>"
+      match: "CheckBox11"
 senior-agency-official-approval-date:
   column-name: "Senior Agency Official Approval Date"
   type: text
-  before: "<DateField2>"
-  after: "</DateField2>"
+  match: "DateField2"
