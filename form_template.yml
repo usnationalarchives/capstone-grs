@@ -248,3 +248,15 @@ senior-agency-official-approval-date:
   column-name: "Senior Agency Official Approval Date"
   type: text
   match: "DateField2"
+senior-agency-official-approval-date:
+  column-name: "Senior Agency Official Approval Date"
+  type: text
+  match: "DateField2"
+chief-records-officer:
+  column-name: "Chief Records Officer of the U.S."
+  type: text
+  match: "TextField16"
+chief-records-officer-approval-date:
+  column-name: "Chief Records Officer of the U.S."
+  type: text
+  match: "DateField5"
