@@ -106,9 +106,22 @@ module Jekyll
     end
 
     def get_text_input(item, pdf_mash)
-      found_item = pdf_mash.deep_find(item['match'])
-      found_item = "" if found_item.nil? 
-      return found_item
+      # this is a workaround since some of the fields in 
+      # the pdf form have the same identifier
+      if (item['match'] == "LegacyScope" || 
+        item['match'] == "URL" || 
+        item['match'] == "ContactRO" || 
+        item['match'] == "ContactOther")
+        found_item = pdf_mash.deep_find(item['match'])
+        found_item.extend Hashie::Extensions::DeepFind
+        found_item = found_item.deep_find('TextField8')
+        found_item = "" if found_item.nil? 
+        return found_item
+      else
+        found_item = pdf_mash.deep_find(item['match'])
+        found_item = "" if found_item.nil? 
+        return found_item
+      end
     end
 
     def get_multi_text_input(item, pdf_mash)      

@@ -65,7 +65,7 @@ additional-scope-comments:
 legacy-email-scope:
   column-name: "Legacy Email Scope"
   type: text
-  match: "TextField8"
+  match: "LegacyScope"
 classified-accounts:
   column-name: "Classified Accounts"
   type: checkbox
@@ -79,15 +79,15 @@ classified-accounts:
 url-agency-organization-chart:
   column-name: "URL to Agency Organization Chart"
   type: text
-  match: "TextField8"
+  match: "URL"
 contact-information-for-agency-records-officer:
   column-name: "Contact Information for Agency Records Officer"
   type: text
-  match: "TextField8"
+  match: "ContactRO"
 contact-if-questions:
   column-name: "Whom should NARA contact if there any questions"
   type: text
-  match: "TextField8"
+  match: "ContactOther"
 category-1:
   column-name: "Category 1 Position Title/Role and Number of Accounts"
   type: text-multi-row
