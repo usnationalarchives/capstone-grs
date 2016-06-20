@@ -30,7 +30,9 @@ module Jekyll
       data = []
 
       # add header row to the generated csv data
-      data << form_template.map { |key, item| item['column-name'] }
+      row = form_template.map { |key, item| item['column-name'] }
+      row << "PDF Form"
+      data << row
 
       # go through all pdf files, extract data, and add to the csv
       file_names.each do |filename|        
@@ -70,6 +72,10 @@ module Jekyll
             # add the item found to the csv row
             csv_row << found_item.gsub(".00000000", "")       
           end
+
+          # add pdf filename to last column in csv row
+          # the base url/domain should come from the site.url variable
+          csv_row << "https://github.com/usnationalarchives#{site.baseurl}/raw/gh-pages/#{forms_dir}/#{filename}"
 
           # add generated csv row to the csv data
           data << csv_row
