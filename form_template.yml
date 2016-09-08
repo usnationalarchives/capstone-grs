@@ -62,6 +62,14 @@ additional-scope-comments:
   column-name: "Additional Scope Comments"
   type: text
   match: "TextField7"
+cutoff Instructions:
+  column-name: "Cutoff Instructions."
+  type: text
+  match: "cutoffinstructions"
+transfer Instructions:  
+  column-name: "Transfer Instructions."
+  type: text
+  match: "transferinstructions"
 legacy-email-scope:
   column-name: "Legacy Email Scope"
   type: text
