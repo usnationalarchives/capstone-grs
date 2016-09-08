@@ -65,11 +65,11 @@ additional-scope-comments:
 cutoff Instructions:
   column-name: "Cutoff Instructions"
   type: text
-  match: "CutoffInstructions"
+  match: "cutoffinstructions"
 transfer Instructions:  
   column-name: "Transfer Instructions"
   type: text
-  match: "TransferInstructions"
+  match: "transferinstructions"
 legacy-email-scope:
   column-name: "Legacy Email Scope"
   type: text
