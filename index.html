@@ -1,10 +1,10 @@
 ---
 layout: default
----  
+---
 {% include navbar.html %}
 
 <!-- second section - about -->
-<div id="about">  
+<div id="about">
   <div class="col-md-12">
     <h1>General Records Schedule (GRS) 6.1</h1>
     <h2>Email Managed under a Capstone Approach</h2>
@@ -22,64 +22,81 @@ layout: default
     </ul>
     <p>*Definitions of what is included within a category is described on the Verification for Implementing GRS 6.1: Email managed Under a Capstone Approach NA-1005 form.</p>
     <p>For questions on the GRS 6.1 and/or form NA-1005, please contact NARA’s GRS Team at <a href="mailto:GRS_Team@nara.gov">GRS_Team@nara.gov</a>.</p>
-  </div>     
+  </div>
 </div>
 <br/>
 <!-- third section - entries -->
-<div id="explore">  
-  <h1>Submissions</h1>      
-  
+<div id="explore">
+  <h1>Submissions</h1>
+
     <div class="col-md-8 col-md-offset-2">
       <div class="panel with-nav-tabs panel-primary">
         <div class="panel-heading">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tabagency" data-toggle="tab">By Agency</a></li>
-            <li><a href="#tabdate" data-toggle="tab">By Date</a></li>            
+            <li><a href="#tabdate" data-toggle="tab">By Date</a></li>
             <li><a href="#tabrecordgroup" data-toggle="tab">By Record Group</a></li>
           </ul>
         </div>
 
         <div class="panel-body">
           <div class="tab-content">
-            <div class="tab-pane fade in active" id="tabagency">
+            <div class="tab-pane fade in active text-left" id="tabagency">
+
+              {% assign agencies = site.emptyArray %}
               {% for row in site.data['forms'] %}
-              <li>          
+                {% assign agencies = agencies | push: row['Name of Agency to Which this Form Applies'] %}
+              {% endfor %}
+
+              {% assign sorted_agencies = (agencies|sort) %}
+              {% for agency in sorted_agencies %}
+                <li>
+                <a href="{{ site.baseurl }}/api/forms/{{ 'Name of Agency to Which this Form Applies' | sanitize_string }}/{{ agency | sanitize_string }}.html">
+                  {{ agency }}
+                </a>
+                </li>
+              {% endfor %}
+
+              <!--
+              {% for row in site.data['forms'] %}
+              <li>
                 <a href="{{ site.baseurl }}/api/forms/{{ 'Name of Agency to Which this Form Applies' | sanitize_string }}/{{ row['Name of Agency to Which this Form Applies'] | sanitize_string }}.html">
                   {{ row['Name of Agency to Which this Form Applies'] }}
                 </a>
               </li>
-              {% endfor %}  
-            </div>            
+              {% endfor %}
+              -->
+            </div>
             <div class="tab-pane fade" id="tabdate">
               {% for row in site.data['forms'] %}
-              <li>          
+              <li>
                 <a href="{{ site.baseurl }}/api/forms/{{ 'Received Date' | sanitize_string }}/{{ row['Received Date'] | sanitize_string }}.html">
                   {{ row['Received Date'] }}
                 </a>
               </li>
-              {% endfor %}  
+              {% endfor %}
             </div>
-            <div class="tab-pane fade" id="tabrecordgroup">              
+            <div class="tab-pane fade" id="tabrecordgroup">
               {% for row in site.data['forms'] %}
-              <li>          
+              <li>
                 <a href="{{ site.baseurl }}/api/forms/{{ 'Record Group Number' | sanitize_string }}/{{ row['Record Group Number'] | sanitize_string }}.html">
                   {{ row['Record Group Number'] }}
                 </a>
               </li>
-              {% endfor %}  
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
 
-    </div>     
+    </div>
 </div>
 <br/>
 <!-- fourth section - entries -->
-<div id="additional">  
+<div id="additional">
     <div class="col-md-12">
-      <h1>Additional Resources</h1>  
-      <br/>    
+      <h1>Additional Resources</h1>
+      <br/>
       <p>This page contains additional information on the responsibilities and status of email management across Federal agencies.</p>
       <p>Federal agencies are required to manage their email records in accordance with the <a href="http://www.archives.gov/about/laws/fed-agencies.html">Federal Records</a> Act and <a href="https://www.archives.gov/about/regulations/regulations.html">36 CFR Chapter XII Sub-chapter B</a>.  With the issuance of the <a href=" https://www.archives.gov/records-mgmt/prmd.html">Managing Government Records Directive (M-12-18)</a>, Goal 1.2, agencies are required to manage both permanent and temporary email records in an accessible electronic format by <strong>December 31, 2016</strong>.</p>
       <p>NARA’s Capstone Approach and GRS 6.1 provide one way in which Federal agencies can meet these requirements.  To find additional information on how individual agencies are managing email please download NARA's Email Management Spreadsheet.  It contains:</p>
@@ -90,5 +107,5 @@ layout: default
       </ul>
       <p>This spreadsheet is updated as new information is available.  For questions about this list or to request that additional agencies be added, please contact NARA’s GRS Team at <a href="mailto:GRS_Team@nara.gov">GRS_Team@nara.gov</a>.</p>
 
-    </div>     
+    </div>
 </div>
