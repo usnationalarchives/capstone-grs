@@ -1,44 +1,72 @@
 ---
 title: "test"
 layout: default
----  
+---
 {% include navbar.html %}
 
 {% assign url = page.url | remove: "/api/" | remove: ".html" %}
 {% assign url_components = url | split: "/" %}
 {% assign data_file_name = url_components[0] %}
 
-<div id="api" class="home">     
+{% assign tmp = site.emptyArray %}
 
-  <table id="table" 
-    data-toggle="table" 
-    data-search="true" 
-    data-show-refresh="true" 
-    data-show-columns="true" 
-    data-show-export="true" 
-    data-pagination="true" 
-    data-page-list="[10, 25, 50, 100, ALL]" 
+{% assign indx = 0 %}
+{% for header in site.data[data_file_name].first %}
+  {% assign tmp = tmp | push: header %}
+{% endfor %}
+
+
+{% assign columns = site.emptyArray %}
+{% assign indx = 0 %}
+{% for header in tmp %}
+  {% assign indx = indx | plus: 1 %}
+  {% if indx == 3 %}
+    {% assign columns = columns | push: tmp.last %}
+  {% endif %}
+
+  {% if forloop.last == false %}
+    {% assign columns = columns | push: header %}
+  {% endif %}
+{% endfor %}
+
+
+
+<div id="api" class="home">
+
+  <table id="table"
+    data-toggle="table"
+    data-search="true"
+    data-show-refresh="true"
+    data-show-columns="true"
+    data-show-export="true"
+    data-pagination="true"
+    data-page-list="[10, 25, 50, 100, ALL]"
     data-show-toggle="true"
-    data-url="{{site.baseurl}}/api/{{ data_file_name }}.json">        
+    data-url="{{site.baseurl}}/api/{{ data_file_name }}.json">
     <thead>
       <tr>
-        {% for element in site.data[data_file_name].first %}
-          <th data-field="{{ element[0] }}" 
-              data-sortable="true" 
+        {% for element in columns %}
+          <th data-field="{{ element[0] }}"
+              data-sortable="true"
               data-formatter="{{element[0] | sanitize_string | replace: "-", "" }}Formatter">
             <a href="{{site.baseurl}}/api/{{ data_file_name }}/{{ element[0] | sanitize_string }}.html">{{ element[0] }}</a>
           </th>
-        {% endfor %}                        
+        {% endfor %}
       </tr>
     </thead>
   </table>
 </div>
 
-{% for element in site.data[data_file_name].first %}
+{% for element in columns %}
   <script type="text/javascript">
-    function {{ element[0] | sanitize_string | replace: "-", "" }}Formatter(value) {       
+    function {{ element[0] | sanitize_string | replace: "-", "" }}Formatter(value) {
       var partial = "{{site.baseurl}}/api/{{ data_file_name }}/{{ element[0] | sanitize_string }}";
-      return getLinkUrl(partial, value);
+      {% if element[0] == "PDF Form" %}
+        //return getLinkUrl(partial, value);
+        return '<a href="' + value + '"><img src="{{ site.baseurl }}/img/Adobe_PDF_file_icon_32x32.png" alt="PDF" /></a>';
+      {% else %}
+        return getLinkUrl(partial, value);
+      {% endif %}
     }
   </script>
-{% endfor %}                        
+{% endfor %}
