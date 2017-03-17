@@ -1,0 +1,270 @@
+number: 
+  column-name: "Number"
+  type: text
+  match: "TextField1"  
+received-date:
+  column-name: "Received Date"
+  type: text
+  match: "DateField4"  
+total-accounts: 
+  column-name: "Total Accounts"
+  type: text
+  match: "NumericField1"  
+agency-name:
+  column-name: "Name of Agency to Which this Form Applies"
+  type: text
+  match: "TextField4"
+record-group-number:
+  column-name: "Record Group Number"
+  type: text
+  match: "TextField5"
+superceding-previous-submission:
+  column-name: "Superseding a Previous Submission"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Yes"
+      match: "CheckBox1"
+  - label:
+      label-name: "No"
+      match: "CheckBox2"
+previous-tracking-number:
+  column-name: "Previous Tracking Number"
+  type: text
+  match: "TextField6"
+grs-items-proposed-for-use:
+  column-name: "GRS 6.1 Item(s) Proposed for Use"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "All"
+      match: "CheckBox3"
+  - label:
+      label-name: "ITEM 010"
+      match: "CheckBox4"
+  - label:
+      label-name: "ITEM 011"
+      match: "CheckBox5"
+  - label:
+      label-name: "ITEM 012"
+      match: "CheckBox6"
+implementation-scope:
+  column-name: "Implementation Scope for this Submission"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Agency-Wide"
+      match: "CheckBox7"
+  - label:
+      label-name: "Component/Office"
+      match: "CheckBox8"
+additional-scope-comments:
+  column-name: "Additional Scope Comments"
+  type: text
+  match: "TextField7"
+cutoff Instructions:
+  column-name: "Cutoff Instructions"
+  type: text
+  match: "Cutoff"
+transfer Instructions:  
+  column-name: "Transfer Instructions"
+  type: text
+  match: "Transfer"
+legacy-email-scope:
+  column-name: "Legacy Email Scope"
+  type: text
+  match: "LegacyScope"
+classified-accounts:
+  column-name: "Classified Accounts"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "No"
+      match: "CheckBox10"
+  - label:
+      label-name: "Yes"
+      match: "CheckBox9"
+url-agency-organization-chart:
+  column-name: "URL to Agency Organization Chart"
+  type: text
+  match: "URL"
+contact-information-for-agency-records-officer:
+  column-name: "Contact Information for Agency Records Officer"
+  type: text
+  match: "ContactRO"
+contact-if-questions:
+  column-name: "Whom should NARA contact if there any questions"
+  type: text
+  match: "ContactOther"
+category-1:
+  column-name: "Category 1 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat1"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-1-total:
+  column-name: "Category 1 Total Accounts"
+  type: number
+  match: "Cat1Total"  
+category-2:
+  column-name: "Category 2 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat2"  
+  fields:
+  - field:
+    match: "TextField11"    
+  - field:
+    match: "NumericField2"
+category-2-total:
+  column-name: "Category 2 Total Accounts"
+  type: number
+  match: "Cat2Total"
+category-3:
+  column-name: "Category 3 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat3"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-3-total:
+  column-name: "Category 3 Total Accounts"
+  type: number
+  match: "Cat3Total"
+category-4:
+  column-name: "Category 4 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat4"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-4-total:
+  column-name: "Category 4 Total Accounts"
+  type: number
+  match: "Cat4Total"
+category-5:
+  column-name: "Category 5 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat5"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-5-total:
+  column-name: "Category 5 Total Accounts"
+  type: number
+  match: "Cat5Total"
+category-6:
+  column-name: "Category 6 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat6"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-6-total:
+  column-name: "Category 6 Total Accounts"
+  type: number
+  match: "Cat6Total"
+category-7:
+  column-name: "Category 7 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat7"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-7-total:
+  column-name: "Category 7 Total Accounts"
+  type: number
+  match: "Cat7Total"
+category-8:
+  column-name: "Category 8 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat8"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-8-total:
+  column-name: "Category 8 Total Accounts"
+  type: number
+  match: "Cat8Total"
+category-9:
+  column-name: "Category 9 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat9"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-9-total:
+  column-name: "Category 9 Total Accounts"
+  type: number
+  match: "Cat9Total"
+category-10:
+  column-name: "Category 10 Position Title/Role and Number of Accounts"
+  type: text-multi-row
+  match: "Cat10"
+  fields:
+  - field:
+    match: "TextField11"
+  - field:
+    match: "NumericField2"
+category-10-total:
+  column-name: "Category 10 Total Accounts"
+  type: number
+  match: "Cat10Total"
+agency-records-officer:
+  column-name: "Agency Records Officer"
+  type: text
+  match: "TextField12"
+agency-records-officer-approval:
+  column-name: "Agency Records Officer Approval"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Approved"
+      match: "CheckBox11"
+agency-records-officer-approval-date:
+  column-name: "Agency Records Officer Approval Date"
+  type: text
+  match: "DateField1"
+senior-agency-official:
+  column-name: "Senior Agency Official"
+  type: text
+  match: "TextField13"
+senior-agency-official-approval:
+  column-name: "Senior Agency Official Approval"
+  type: checkbox
+  labels:
+  - label:
+      label-name: "Approved"
+      match: "CheckBox11"
+senior-agency-official-approval-date:
+  column-name: "Senior Agency Official Approval Date"
+  type: text
+  match: "DateField2"
+senior-agency-official-approval-date:
+  column-name: "Senior Agency Official Approval Date"
+  type: text
+  match: "DateField2"
+chief-records-officer:
+  column-name: "Chief Records Officer for the U.S."
+  type: text
+  match: "TextField16"
+chief-records-officer-approval-date:
+  column-name: "Chief Records Officer for the U.S. Approval Date"
+  type: text
+  match: "DateField5"
