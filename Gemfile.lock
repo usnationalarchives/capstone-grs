@@ -145,3 +145,6 @@ DEPENDENCIES
   rake
   travis
   yomu
+
+BUNDLED WITH
+   1.11.2
