@@ -1,0 +1,240 @@
+html, body {
+  background-color: #E5E2D3;
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 40px;
+  padding-top: 30px;
+}
+
+.navbar-brand {
+  max-height: 50px;
+  overflow: visible;    
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.navbar-nav>li >a {
+  display: inline-block;
+  color: #000;
+}
+
+.navbar-nav>li:after {
+  content: "|";
+}
+
+.navbar-nav>li:last-child:after {
+  content: "";
+}
+
+.navbar-right {
+  padding-right: 15px;
+  padding-top: 15px;
+  color: #B33A3A;
+  font-weight: bold;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  margin-top: 350px;
+  padding-top: 30px;      
+  padding-bottom: 30px;
+  background-color: #003E7E;
+  z-index: 100;
+  opacity: 0.90;
+  font-size: 24px;
+  color: #FFF;
+  text-align: center;
+}
+
+#home {
+  background: url(/capstone-grs/img/archives-building.jpg) no-repeat center center fixed;   
+  display: table;
+  height: 600px;
+  /*position: relative;*/
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: repeat;  
+}
+
+#about {  
+  padding-top: 75px;  
+  background-color: #FFF;
+  display: table;
+  height: 800px;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  color: #205493;
+  text-align: center;        
+}     
+
+#about p {
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  color: #000;
+}
+
+#about a {
+  text-decoration: underline;
+}
+
+#about h1 {
+  padding-bottom: 30px;
+  font-weight: 600;
+}
+
+#about ul {
+  text-align: left;
+  padding-left: 15%;
+  padding-right: 10%;
+  color: #000;
+}
+
+.about {
+  position: relative;
+  top: 200px;
+  width: 100%;
+} 
+
+#explore {  
+  padding-top: 75px;  
+  background-color: #FFF;
+  display: table;
+  height: 800px;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  color: #205493;
+  text-align: center;        
+}            
+
+#explore p {
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  color: #000;
+}
+
+#explore h1 {
+  padding-bottom: 30px;
+  font-weight: 600;
+}
+
+#explore ul {
+  text-align: left;
+  padding-left: 15%;
+  padding-right: 10%;
+  color: #000;
+}
+
+.explore {
+  position: relative;
+  top: 200px;
+  width: 100%;
+} 
+
+.explore {
+  position: relative;
+  top: 200px;
+  width: 100%;
+}
+
+#additional {  
+  padding-top: 75px;  
+  background-color: #FFF;
+  display: table;
+  height: 800px;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  color: #205493;
+  text-align: center;        
+}            
+
+#additional p {
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  color: #000;
+}
+
+#additional a {
+  text-decoration: underline;
+}
+#additional h1 {
+  padding-bottom: 30px;
+  font-weight: 600;
+}
+
+#additional ul {
+  text-align: left;
+  padding-left: 15%;
+  padding-right: 10%;
+  color: #000;
+}
+
+.additional {
+  position: relative;
+  top: 200px;
+  width: 100%;
+}
+
+ul.footer {
+  list-style-type: none;
+  padding:0; 
+  margin:0;
+}
+
+.table {
+  background-color: #FFF;  
+}
+
+.footer {
+  text-align: center;
+}
+
+.panel.with-nav-tabs .panel-heading{
+    padding: 5px 5px 0 5px;
+}
+.panel.with-nav-tabs .nav-tabs{
+  border-bottom: none;
+}
+.panel.with-nav-tabs .nav-justified{
+  margin-bottom: -1px;
+}
+
+.with-nav-tabs.panel-primary .nav-tabs > li > a,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+  color: #fff;
+}
+.with-nav-tabs.panel-primary .nav-tabs > .open > a,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+  color: #fff;
+  background-color: #3071a9;
+  border-color: transparent;
+}
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+  color: #428bca;
+  background-color: #fff;
+  border-color: #428bca;
+  border-bottom-color: transparent;
+}
