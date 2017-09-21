@@ -44,17 +44,17 @@ layout: default
           <div class="tab-content">
             <div class="tab-pane fade in active text-left" id="tabagency">
 
-              {% assign agencies = site.emptyArray %}
+              {% assign agencies = site.emptyArray %}              
               {% for row in site.data['forms'] %}
-                {% assign agencies = agencies | push: row['Name of Agency to Which this Form Applies'] %}
+                
+                {% assign tmprow = row['Name of Agency to Which this Form Applies']|strip_string%}
+                {% assign agencies = agencies | push: tmprow %}
               {% endfor %}
 
               {% assign sorted_agencies = (agencies|sort) %}
               {% for agency in sorted_agencies %}
                 <li>
-                <a href="{{ site.baseurl }}/api/forms/{{ 'Name of Agency to Which this Form Applies' | sanitize_string }}/{{ agency | sanitize_string }}.html">
-                  {{ agency }}
-                </a>
+                <a href="{{ site.baseurl }}/api/forms/{{ 'Name of Agency to Which this Form Applies' | sanitize_string }}/{{ agency | sanitize_string }}.html">{{ agency }}</a>
                 </li>
               {% endfor %}
 

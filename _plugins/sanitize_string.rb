@@ -16,6 +16,15 @@ module Jekyll
 	    end
     end
   end
+  
+  module StripStringFilter
+    def strip_string(input)
+    	unless input.nil?        
+        input = input.gsub(/^[[:space:]][bc]*/, '')
+	    end
+    end
+  end
 end
 
 Liquid::Template.register_filter(Jekyll::SanitizeStringFilter)
+Liquid::Template.register_filter(Jekyll::StripStringFilter)
