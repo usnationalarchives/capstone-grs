@@ -53,9 +53,9 @@ layout: default
 
               {% assign sorted_agencies = (agencies|sort) %}
               {% for agency in sorted_agencies %}
-                <li>
+                <ol>
                 <a href="{{ site.baseurl }}/api/forms/{{ 'Name of Agency to Which this Form Applies' | sanitize_string }}/{{ agency | sanitize_string }}.html">{{ agency }}</a>
-                </li>
+                </ol>
               {% endfor %}
 
               <!--
